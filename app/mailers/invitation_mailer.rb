@@ -3,10 +3,10 @@ class InvitationMailer < ActionMailer::Base
 
   def invite_user_email(invitee_details)
     @invitee_details = invitee_details
-    if Rails.env.production?
-      mail(to: "invitee_details.email", subject: "You have been invited to sign up for Myflix.")
-    else
+    if Rails.env.staging?
       mail(to: "matthewbarram@gmail.com", subject: "You have been invited to sign up for Myflix.")
+    else
+      mail(to: "invitee_details.email", subject: "You have been invited to sign up for Myflix.")
     end
   end
 end
