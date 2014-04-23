@@ -13,9 +13,19 @@ gem 'bcrypt-ruby', '3.1.2'
 gem "htmlbeautifier", "~> 0.0.9"
 gem 'fabrication'
 gem 'faker'
+gem 'sidekiq'
+gem 'unicorn'
+gem "sentry-raven"
 
 group :development do
   gem 'sqlite3'
+end
+
+group :development, :test, :staging do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
+
+group :staging, :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'thin'
@@ -24,11 +34,7 @@ group :development do
   gem "letter_opener"
 end
 
-group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
-end
-
-group :test do
+group :test, :staging do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'capybara'
@@ -37,7 +43,7 @@ group :test do
   gem 'capybara-email'
 end
 
-group :production do
+group :production, :staging do
   gem 'pg'
   gem 'rails_12factor'
 end
