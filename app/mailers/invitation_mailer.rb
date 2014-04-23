@@ -6,7 +6,7 @@ class InvitationMailer < ActionMailer::Base
     if Rails.env.staging?
       mail(to: "matthewbarram@gmail.com", subject: "You have been invited to sign up for Myflix.")
     else
-      mail(to: "invitee_details.email", subject: "You have been invited to sign up for Myflix.")
+      mail(to: invitee_details.email, subject: "You have been invited to sign up for Myflix.")
     end
   end
 end

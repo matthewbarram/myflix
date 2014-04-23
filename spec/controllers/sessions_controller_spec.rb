@@ -45,7 +45,7 @@ describe SessionsController do
         expect(flash[:danger]).to be_present
       end
       it 'renders new template if authentication fails' do
-        expect(response).to render_template :new
+        expect(response).to redirect_to login_path
       end
     end
   end

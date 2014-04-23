@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to home_path
     else
       flash[:danger] = "Your login did not authenticate."
-      render :new
+      redirect_to login_path
     end
   end
 
