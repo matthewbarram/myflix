@@ -33,6 +33,13 @@ describe User do
     end
   end
 
+  describe 'admin check' do
+    it 'can access the admin attribute' do
+      Fabricate(:user, admin: true)
+      expect(User.first.admin?).to eq(true)
+    end
+  end
+
   describe 'user can have many followers' do
     it 'allows user to have many friends' do
       user = Fabricate(:user)
