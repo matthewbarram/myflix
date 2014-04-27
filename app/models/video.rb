@@ -6,6 +6,10 @@ class Video < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
 
+  mount_uploader :small_image, SmallImageUploader
+  mount_uploader :large_image, LargeImageUploader
+
+
   def self.search_by_title(search_term)
     where("title LIKE ?", "%#{search_term}%").order("created_at DESC")
   end
