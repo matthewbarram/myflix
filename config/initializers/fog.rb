@@ -7,7 +7,7 @@ CarrierWave.configure do |config|
       :aws_secret_access_key  => ENV["S3_SECRET_ACCESS_KEY"],                        # required
 
     }
-    config.fog_directory  = "myflix_test"                 # required
+    config.fog_directory  = "myflix_test"
     config.fog_public = false
     config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
   else
