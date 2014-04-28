@@ -6,8 +6,11 @@ class Admin::VideosController < AdminController
 
   def create
     @video = Video.new(video_params)
-
-    @video.save
+    if @video.save
+      flash[:success] = "The video has been added."
+    else
+      flash[:danger] = "The video did not save. Please check your input and try again."
+    end
     redirect_to new_admin_video_path
   end
 

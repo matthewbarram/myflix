@@ -1,9 +1,10 @@
 CarrierWave.configure do |config|
   if Rails.env.staging? || Rails.env.production?
+    config.storage = :fog
     config.fog_credentials = {
       :provider               => 'AWS',                        # required
-      :aws_access_key_id      => 'AKIAI4HBWQG247SSRKYQ',                        # required
-      :aws_secret_access_key  => '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',                        # required
+      :aws_access_key_id      => ENV["S3_ACCESS_KEY"],                        # required
+      :aws_secret_access_key  => ENV["S3_SECRET_ACCESS_KEY"],                        # required
 
     }
     config.fog_directory  = "myflix_test"                 # required

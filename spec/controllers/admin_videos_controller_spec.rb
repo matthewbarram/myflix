@@ -39,14 +39,38 @@ describe Admin::VideosController do
         post :create, video: video_params
         expect(Video.count).to eq(1)
       end
-      it 'redirect_to the user to the add video page'
-      it 'shows a confirmation msg'
+      it 'redirect_to the user to the add video page' do
+        video_params = Fabricate.attributes_for(:video)
+        post :create, video: video_params
+        expect(response).to redirect_to new_admin_video_path
+      end
+      it 'shows a confirmation msg' do
+        video_params = Fabricate.attributes_for(:video)
+        post :create, video: video_params
+        expect(flash[:success]).to be_present
+      end
     end
     context 'details are invalid' do
-      it 'does not create a video'
-      it 'sets the @video instance variable'
-      it 'redirects the user to the create page'
-      it 'shows a danger msg'
+      it 'does not create a video' do
+        video_params = Fabricate.attributes_for(:video, title: nil)
+        post :create, video: video_params
+        expect(Video.count).to eq(0)
+      end
+      it 'sets the @video instance variable' do
+        video_params = Fabricate.attributes_for(:video, title: nil)
+        post :create, video: video_params
+        expect(assigns(:video)).to be_present
+      end
+      it 'redirects the user to the create page' do
+        video_params = Fabricate.attributes_for(:video, title: nil)
+        post :create, video: video_params
+        expect(response).to redirect_to new_admin_video_path
+      end
+      it 'shows a danger msg' do
+        video_params = Fabricate.attributes_for(:video, title: nil)
+        post :create, video: video_params
+        expect(flash[:danger]).to be_present
+      end
     end
   end
 end
