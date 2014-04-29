@@ -1,8 +1,10 @@
+<script type="text/javascript" src="//cdn.sublimevideo.net/js/yeynrdrd.js"></script>
 %article.video
   .container
     .row
       .video_large_cover.col-sm-7.col-sm-offset-1
-        %img(src="#{@video.large_image.url}")
+        %video#a240e92d.sublime{"data-uid" => "a240e92d", height: "360", poster: "#{@video.large_image.url}", preload: "none", title: "Midnight Sun", width: "640"}
+          %source{src: "#{@video.url}"}
       .video_info.col-sm-3
         %header
           %h3= @video.title
@@ -11,6 +13,7 @@
         .actions
           - if !already_queue_item_for_video_and_user?(@video, current_user)
             = link_to "+ My Queue", queue_items_path(qitem: {"video_id"=>@video.id, "user_id"=>session[:user_id]}), method: :post, class: "btn btn-default"
+          = link_to "Watch Now", @video.url, class: 'btn btn-default'
 
 %section.reviews.container
   .row
