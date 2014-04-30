@@ -9,6 +9,6 @@
           = f.email_field :email
           = f.text_field :fullname, label: "Full Name"
           = f.password_field :password
-          = f.submit("Submit")
+          %script.stripe-button{"data-amount" => "999", "data-description" => "Subscription ($9.99)", "data-key" => "pk_test_XdqENVHTZ1Oae1eWjxnoQdWB", "data-name" => "Demo Site", src: "https://checkout.stripe.com/checkout.js"}
           - if @invitation
             = hidden_field_tag 'invite_token', @invitation.invite_token
