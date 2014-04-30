@@ -17,7 +17,7 @@
           - if @invitation
             = hidden_field_tag 'invite_token', @invitation.invite_token
         %fieldset.credit_card
-          %span.payment-errors
+          .payment-errors.alert.alert-danger
           .form-group
             %label.control-label.col-sm-2 Credit Card Number
             .col-sm-6
